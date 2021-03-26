@@ -124,7 +124,7 @@ Toolkit.run(async tools => {
     if (process.env['INPUT_SKIP-TAG'] !== 'true') {
       await tools.runInWorkspace('git', [
         'tag', newVersion,
-        ... (tagCommitMessage) ? ['-m', `"${tagCommitMessage.replace(/{{version}}/g, newVersion)}"`]: []]
+        ... (tagCommitMessage) ? ['-m', `${tagCommitMessage.replace(/{{version}}/g, newVersion)}`]: []]
       )
       await tools.runInWorkspace('git', ['push', remoteRepo, '--follow-tags'])
       await tools.runInWorkspace('git', ['push', remoteRepo, '--tags'])
